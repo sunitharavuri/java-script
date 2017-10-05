@@ -6,8 +6,8 @@
 </head>
 <body>
 	<form id="todoFoprm">
-		<input type="text" id="todoInput" placeholder="enter here "><br>
-		<input type="text" id="todoInput1" placeholder="enter here ">
+		<input type="text" id="todoInput" placeholder="enter here ">
+		<!-- <input type="text" id="todoInput1" placeholder="enter here "> -->
 		<button type="button" onclick="addTodoList()">Add</button>
 	</form>
 	<ol id="list">
@@ -16,9 +16,9 @@
 	<script type="text/javascript">
 		function addTodoList(){
 			var item = document.getElementById("todoInput").value;
-			var item1 = document.getElementById("todoInput1").value;
+			//var item = document.getElementById("todoInput1").value;
 			
-			var text = document.createTextNode(item1,item);
+			var text = document.createTextNode(item);
 			var  newItem =document.createElement("li")
 
 			newItem.appendChild(text);
