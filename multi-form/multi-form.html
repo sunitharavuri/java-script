@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Form</title>
+  <!-- <link href="styles.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+       
+          <h2> Sign Up</h2>
+          <hr/>
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name">
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" name="phone_number" id="phone_number" class="form-control input-lg" placeholder="Phone Number">
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
+          </div>
+          <hr/>
+          <div class="row">
+            <div class="col-xs-6 col-md-6"><button id="submit" value="Register" class="btn btn-primary btn-block btn-lg">Submit</button>></div>
+          </div>
+       
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div id="personalInfo">
+        <div class="well">
+          <h6>PersonalInfo: </h6>
+          <p><span class="label label-info"></span></p>
+          <h3 id= "fname"></h3><h3 id="lname"></h3>
+
+          <p><span class="glyphicon glyphicon-time" id="phone"></span>
+            <span class="glyphicon glyphicon-user" id="email-in"></span> </p>
+          <a href="#" class="btn btn-warning" onclick="setStatusClosed('id')"> Close</a>
+          <a href="#" class="btn btn-danger" onclick="deleteForm('id')"> Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  var submit = document.getElementById('submit');
+  submit.onClick = function () {
+    var firstname = document.getElementById('first_name').value;
+    var lastname = document.getElementById('last_name').value;
+    var phonenumber = document.getElementById('phone_number').value;
+    var email = document.getElementById('email').value;
+
+    document.getElementById('fname').innerText=firstname;
+    document.getElementById('lname').innerText=lastname;
+    document.getElementById('phone').innerText=phonenumber;
+    document.getElementById('email-in').innerText=email;
+
+
+  }
+
+  
+
+
+
+</script>
+
+</html>
