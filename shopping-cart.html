@@ -23,6 +23,9 @@
 		<ul id="show-cart">
 			<!---   -->
 		</ul>
+		<div > 
+			Total Price:$<span id="total-cart"></span>
+		</div>
 	</div>
 
 
@@ -41,10 +44,38 @@ function displayCart(){
 var cartArray= listCart();
 var output="";
 for(var i in cartArray){
-	output += "<li>" +cartArray[i].name+" "+cartArray[i].count+"</li>"
+	output += "<li>" +cartArray[i].name+" "+cartArray[i].count+
+	"*"+cartArray[i].price+" ="+cartArray[i].total+ "</li>"+
+	"<button class='delete-cart' data-name='"+cartArray[i].name+"'>X</button>" +
+    "<button class='minus-cart' data-name='"+cartArray[i].name+"'></button>" + 
+	"<button class='minus-cart' data-name='"+cartArray[i].name+"'>-</button>" +
+	"<button class='minus-cart' data-name='"+cartArray[i].name+"'></button>" +
+	"<button class='plus-cart' data-name='"+cartArray[i].name+"'>+</button>" 
 }
 $("#show-cart").html(output);
-}
+$("#total-cart").html(totalCart());
+};
+$("#clear-cart").click(function(event){
+    clearCart();
+	displayCart();
+});
+$("#show-cart").on("click",".delete-cart",function(event){
+	var name=$(this).attr("data-name");
+	removeAllItems(name);
+	displayCart();
+});
+$("#show-cart").on("click",".minus-cart",function(event){
+	var name=$(this).attr("data-name");
+	removeItemFromCart(name)
+	displayCart();
+});
+$("#show-cart").on("click",".plus-cart",function(event){
+	var name=$(this).attr("data-name");
+	addItemToCart(name,0,1)
+	displayCart();
+})
+
+
 
 // ***************************
 // javascript functions
@@ -59,7 +90,8 @@ $("#show-cart").html(output);
 			for( var i in cart){
 				if(cart[i].name === name){
                    cart[i].count +=count;
-				//    cart[i].price +=price;
+				 //  cart[i].price +=price;
+				 saveCart();
 				 return;
 				}
 			}
@@ -95,10 +127,10 @@ $("#show-cart").html(output);
 			saveCart();
 		}
 
-		// addItemToCart("apple",1.50,1 );
-		// addItemToCart("mango",2.22,4 );
-    	// addItemToCart("banana",3.3,3 );
-		// addItemToCart("apple",1,2 );
+		// addItemToCart("apple",1.22,1 );
+		// addItemToCart("mango",2.20,4 );
+    	// addItemToCart("banana",2,3 );
+		// addItemToCart("apple",1.22,2 );
 	
 		console.log(cart.length);
 		console.log(cart);
@@ -121,9 +153,10 @@ $("#show-cart").html(output);
 	function totalCart(){
 		var totalCost=0;
 		for( var i in cart){
-            totalCost += cart[i].price;
+            totalCost += cart[i].count*cart[i].price;
 		}
-		return totalCost;
+		
+		return totalCost.toFixed(2);
 	}
 	console.log(totalCart());
 
@@ -135,6 +168,7 @@ $("#show-cart").html(output);
 		 for (var p in item){// iterating  among properties of item and assigning to a variable
 			 itemCopy[p]=item[p];
 		 }
+		 itemCopy.total=(item.count*item.price).toFixed(2);
 		 cartCopy.push(itemCopy);
 		}
 		return cartCopy;
@@ -152,6 +186,7 @@ function loadCart(){
 
 }
 loadCart();
+displayCart();
 
 	</script>
 
