@@ -1,9 +1,15 @@
-/* .btn-add-cart {
+ /* .btn-add-cart {
 	position: absolute;
 	left: 15px;
 	top: 0px;
-} */
-* {
+}  */
+img {
+    display: block;
+    margin: auto;
+    width: 250px;
+    height:250px;
+}
+/* * {
   box-sizing: border-box;
 }
 
@@ -130,4 +136,4 @@ body {
   bottom: 0;
   text-align: center;
   width: 100%;
-}
+} */
